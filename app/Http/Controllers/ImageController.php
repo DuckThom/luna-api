@@ -75,7 +75,7 @@ class ImageController extends Controller
      */
     public function list(Request $request): JsonResponse
     {
-        $limit = abs($request->input('limit', 15));
+        $limit = abs((int) $request->input('limit', 15));
         $limit = ($limit < static::MAX_LIST_LIMIT ? $limit : static::MAX_LIST_LIMIT);
         /** @var \Illuminate\Database\Eloquent\Builder $query */
         $query = Image::limit($limit);
