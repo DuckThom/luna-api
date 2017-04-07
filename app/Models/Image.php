@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Interfaces\ImageInterface;
 use Illuminate\Database\Eloquent\Model;
 use App\Services\WordsGenerator;
 
-class Image extends Model
+/**
+ * Image model
+ *
+ * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
+ */
+class Image extends Model implements ImageInterface
 {
     const NOT_FOUND = 'No image was found with the given tag';
     const DETAILS = 'Image details';
@@ -26,7 +32,7 @@ class Image extends Model
     protected $hidden = ['user_id', 'content'];
 
     /**
-     * The owner of the image
+     * The owner of the image.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -36,7 +42,7 @@ class Image extends Model
     }
 
     /**
-     * Generate a unique slug
+     * Generate a unique slug.
      *
      * Throws an \Exception if the retry count exceeds SLUG_RETRY_LIMIT
      *
@@ -62,21 +68,21 @@ class Image extends Model
     }
 
     /**
-     * Get the url to the image
+     * Get the url to the image.
      *
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         return route('image.show', ['slug' => $this->attributes['slug']]);
     }
 
     /**
-     * Add a view
+     * Add a view.
      *
      * @return int
      */
-    public function addView()
+    public function addView(): int
     {
         $this->attributes['views']++;
         $this->save();
@@ -85,22 +91,58 @@ class Image extends Model
     }
 
     /**
-     * Get the image content
+     * Get the image content.
      *
      * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->attributes['content'];
     }
 
     /**
-     * Get the mime type
+     * Set the image content.
+     *
+     * @param  string  $content
+     * @return $this
+     */
+    public function setContent(string $content)
+    {
+        $this->attributes['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get the mime type.
      *
      * @return string
      */
-    public function getMimeType()
+    public function getMimeType(): string
     {
         return $this->attributes['mime'];
+    }
+
+    /**
+     * Set the image mime type.
+     *
+     * @param  string  $mime
+     * @return $this
+     */
+    public function setMimeType(string $mime)
+    {
+        $this->attributes['mime'] = $mime;
+
+        return $this;
+    }
+
+    /**
+     * Get the user id.
+     *
+     * @return string
+     */
+    public function getUserId(): string
+    {
+        return $this->attributes['user_id'];
     }
 }

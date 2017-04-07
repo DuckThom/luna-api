@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -53,6 +54,7 @@ class ImageController extends Controller
      */
     public function info(string $id): JsonResponse
     {
+        /** @var \App\Models\Image $image */
         $image = Image::find($id);
 
         if ($image === null) {
@@ -66,12 +68,16 @@ class ImageController extends Controller
     }
 
     /**
-     * Create a list of image
+     * Create a list of images
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function list(Request $request)
+    public function list(Request $request): JsonResponse
     {
         $limit = abs($request->input('limit', 15));
         $limit = ($limit < static::MAX_LIST_LIMIT ? $limit : static::MAX_LIST_LIMIT);
+        /** @var \Illuminate\Database\Eloquent\Builder $query */
         $query = Image::limit($limit);
 
         if (Auth::check()) {
@@ -79,6 +85,7 @@ class ImageController extends Controller
         }
 
         $images = $query->get()->each(function ($image) {
+            /** @var \App\Models\Image $image */
             $image->url = $image->getUrl();
         });
 
@@ -91,11 +98,11 @@ class ImageController extends Controller
      * Create a new image
      *
      * @param  Request  $request
-     * @return JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function create(Request $request)
+    public function create(Request $request): JsonResponse
     {
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'image' => ['required', 'image']
         ]);
 
@@ -127,18 +134,18 @@ class ImageController extends Controller
      *
      * @param  Request  $request
      * @param  string  $id
-     * @return JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(Request $request, string $id)
+    public function delete(Request $request, string $id): JsonResponse
     {
+        /** @var \App\Models\Image $image */
         $image = Image::find($id);
 
         if ($image === null) {
             return $this->imageNotFound();
         }
 
-        if ($image->user_id === Auth::id()) {
-            unlink($image->getPath());
+        if ($image->getUserId() === Auth::id()) {
             $image->delete();
 
             return $this->jsonSuccess([
@@ -154,9 +161,9 @@ class ImageController extends Controller
     /**
      * Image not found response
      *
-     * @return JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected function imageNotFound()
+    protected function imageNotFound(): JsonResponse
     {
         return $this->jsonError([
             'message' => Image::NOT_FOUND
