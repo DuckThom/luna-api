@@ -15,7 +15,7 @@ $factory->define(Api\Models\User::class, function (Faker\Generator $faker) {
     return [
         'id' => $faker->uuid,
         'token' => $faker->uuid,
-        'name' => $faker->userName
+        'name' => $faker->userName,
     ];
 });
 
@@ -31,6 +31,6 @@ $factory->define(Api\Models\Image::class, function (Faker\Generator $faker) {
         'slug' => \Api\Services\WordsGenerator::make(),
         'mime' => 'image/jpeg',
         'views' => 0,
-        'content' => $imageData
+        'content' => $imageData,
     ];
 });

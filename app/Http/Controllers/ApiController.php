@@ -2,11 +2,11 @@
 
 namespace Api\Http\Controllers;
 
-use Api\Services\Interfaces\EndpointServiceInterface;
 use Illuminate\Http\Request;
+use Api\Services\Interfaces\EndpointServiceInterface;
 
 /**
- * API Controller
+ * API Controller.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */

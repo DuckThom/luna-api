@@ -5,7 +5,7 @@ namespace Api\Endpoints\Image;
 use Api\Endpoints\AbstractEndpoint;
 
 /**
- * Image endpoint service
+ * Image endpoint service.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
@@ -17,7 +17,7 @@ class Endpoint extends AbstractEndpoint
     public $uri = 'image';
 
     /**
-     * Register the route
+     * Register the route.
      *
      * @return void
      */

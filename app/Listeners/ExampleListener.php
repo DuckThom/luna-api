@@ -3,8 +3,6 @@
 namespace Api\Listeners;
 
 use Api\Events\ExampleEvent;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ExampleListener
 {

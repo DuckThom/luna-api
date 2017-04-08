@@ -5,7 +5,7 @@ namespace Api\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * LastFM facade
+ * LastFM facade.
  *
  * @method static \Psr\Http\Message\ResponseInterface currentTrack()
  *

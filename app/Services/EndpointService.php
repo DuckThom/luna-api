@@ -7,7 +7,7 @@ use Api\Collections\EndpointCollection;
 use Api\Services\Interfaces\EndpointServiceInterface;
 
 /**
- * Endpoint service
+ * Endpoint service.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
@@ -33,7 +33,7 @@ class EndpointService implements EndpointServiceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getEndpoints(): EndpointCollection
     {
@@ -41,7 +41,7 @@ class EndpointService implements EndpointServiceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getEndpointsByMethod(string $method = null): EndpointCollection
     {
@@ -49,7 +49,7 @@ class EndpointService implements EndpointServiceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasEndpoint(string $endpoint, string $method = null): bool
     {

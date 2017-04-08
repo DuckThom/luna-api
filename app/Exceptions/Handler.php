@@ -48,11 +48,11 @@ class Handler extends ExceptionHandler
         $response = parent::render($request, $e);
 
         return response()->json([
-            "status" => "error",
-            "code" => $response->getStatusCode(),
-            "payload" => [
-                'message' => $e->getMessage()
-            ]
+            'status' => 'error',
+            'code' => $response->getStatusCode(),
+            'payload' => [
+                'message' => $e->getMessage(),
+            ],
         ]);
     }
 }

@@ -3,7 +3,7 @@
 namespace Api\Models\Interfaces;
 
 /**
- * User model interface
+ * User model interface.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
@@ -32,7 +32,7 @@ interface UserInterface
     public function getToken(): string;
 
     /**
-     * Set the access token
+     * Set the access token.
      *
      * @param  string  $token
      * @return $this

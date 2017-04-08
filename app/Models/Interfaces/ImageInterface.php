@@ -3,7 +3,7 @@
 namespace Api\Models\Interfaces;
 
 /**
- * Image model interface
+ * Image model interface.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */

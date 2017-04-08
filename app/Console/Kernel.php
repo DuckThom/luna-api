@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\ImageClear::class,
-        Commands\UserCreate::class
+        Commands\UserCreate::class,
     ];
 
     /**

@@ -7,7 +7,7 @@ use Webpatser\Uuid\Uuid;
 use Illuminate\Console\Command;
 
 /**
- * Create user command
+ * Create user command.
  *
  * @author  Thomas Wiringa <thomas.wiringa@gmail.com>
  */
@@ -21,10 +21,10 @@ class UserCreate extends Command
     /**
      * @var string
      */
-    public $description = "Add a new user for the API";
+    public $description = 'Add a new user for the API';
 
     /**
-     * Run the command
+     * Run the command.
      *
      * @return int
      */
@@ -37,13 +37,13 @@ class UserCreate extends Command
         if ($user->save()) {
             $this->output->success("A new user has been created\nThe access token is: {$user->getToken()}");
 
-            \Log::info("[Artisan] A new user has been created", [
-                'User id' => $user->getId()
+            \Log::info('[Artisan] A new user has been created', [
+                'User id' => $user->getId(),
             ]);
         } else {
-            $this->output->error("Failed to create a new user");
+            $this->output->error('Failed to create a new user');
 
-            \Log::error("[Artisan] Failed to create a new user");
+            \Log::error('[Artisan] Failed to create a new user');
         }
 
         return 0;

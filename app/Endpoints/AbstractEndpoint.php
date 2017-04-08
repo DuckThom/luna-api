@@ -8,7 +8,7 @@ use Api\Exceptions\MissingUriException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Abstract endpoint
+ * Abstract endpoint.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
@@ -49,7 +49,7 @@ abstract class AbstractEndpoint
     {
         if ($uri === null && $this->uri === null) {
             throw new MissingUriException(get_class($this));
-        } else if ($uri !== null) {
+        } elseif ($uri !== null) {
             $this->uri = $uri.'/'.$this->uri;
         }
 
@@ -79,7 +79,7 @@ abstract class AbstractEndpoint
                 'middleware' => $endpoint->middleware,
                 function () use ($endpoint) {
                     return $endpoint->handle();
-                }
+                },
             ]);
 
             $endpoint->resolve($app);
@@ -105,6 +105,6 @@ abstract class AbstractEndpoint
      */
     public function handle()
     {
-        throw new NotFoundHttpException("404 Not Found: ".app('request')->getUri());
+        throw new NotFoundHttpException('404 Not Found: '.app('request')->getUri());
     }
 }

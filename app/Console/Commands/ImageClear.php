@@ -7,7 +7,7 @@ use Api\Models\Image;
 use Illuminate\Console\Command;
 
 /**
- * Clear images command
+ * Clear images command.
  *
  * @author  Thomas Wiringa <thomas.wiringa@gmail.com>
  */
@@ -21,10 +21,10 @@ class ImageClear extends Command
     /**
      * @var string
      */
-    public $description = "Clear images that are more than 1 month old";
+    public $description = 'Clear images that are more than 1 month old';
 
     /**
-     * Run the command
+     * Run the command.
      *
      * @return int
      */
@@ -37,13 +37,13 @@ class ImageClear extends Command
 
             $this->output->success('All images have been removed successfully');
 
-            \Log::info("[Artisan] All images have been removed");
+            \Log::info('[Artisan] All images have been removed');
         } else {
             Image::where('created_at', '<', Carbon::now()->subMonth())->delete();
 
             $this->output->success('All images older than 1 month have been removed successfully');
 
-            \Log::info("[Artisan] One month old images have been removed");
+            \Log::info('[Artisan] One month old images have been removed');
         }
 
         return 0;
