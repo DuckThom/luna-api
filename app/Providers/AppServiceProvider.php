@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace Api\Providers;
 
 use GuzzleHttp\Client;
-use App\Services\LastFm;
+use Api\Services\LastFm;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

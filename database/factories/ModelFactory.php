@@ -11,14 +11,15 @@
 |
 */
 
-$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(Api\Models\User::class, function (Faker\Generator $faker) {
     return [
         'id' => $faker->uuid,
         'token' => $faker->uuid,
+        'name' => $faker->userName
     ];
 });
 
-$factory->define(App\Models\Image::class, function (Faker\Generator $faker) {
+$factory->define(Api\Models\Image::class, function (Faker\Generator $faker) {
     static $imageData = null;
     static $imageUrl = null;
 
@@ -27,7 +28,7 @@ $factory->define(App\Models\Image::class, function (Faker\Generator $faker) {
 
     return [
         'id' => $faker->uuid,
-        'slug' => \App\Services\WordsGenerator::make(),
+        'slug' => \Api\Services\WordsGenerator::make(),
         'mime' => 'image/jpeg',
         'views' => 0,
         'content' => $imageData

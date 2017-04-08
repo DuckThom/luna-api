@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Api\Console\Commands;
 
-use App\Models\User;
+use Api\Models\User;
 use Webpatser\Uuid\Uuid;
 use Illuminate\Console\Command;
 

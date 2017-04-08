@@ -25,7 +25,7 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades([
     'Image' => Intervention\Image\Facades\Image::class,
-    'LastFm' => App\Facades\LastFm::class,
+    'LastFm' => Api\Facades\LastFm::class,
 ]);
 
 $app->withEloquent();
@@ -45,12 +45,12 @@ $app->configure('lastfm');
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    Api\Exceptions\Handler::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    Api\Console\Kernel::class
 );
 
 /*
@@ -65,11 +65,11 @@ $app->singleton(
 */
 
 // $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
+//    Api\Http\Middleware\ExampleMiddleware::class
 // ]);
 
 $app->routeMiddleware([
-    'auth' => App\Http\Middleware\Authenticate::class,
+    'auth' => Api\Http\Middleware\Authenticate::class,
 ]);
 
 /*
@@ -83,9 +83,9 @@ $app->routeMiddleware([
 |
 */
 
-$app->register(App\Providers\AppServiceProvider::class);
-$app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Api\Providers\AppServiceProvider::class);
+$app->register(Api\Providers\AuthServiceProvider::class);
+// $app->register(Api\Providers\EventServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
 $app->register(Intervention\Image\ImageServiceProviderLumen::class);
 
@@ -100,7 +100,7 @@ $app->register(Intervention\Image\ImageServiceProviderLumen::class);
 |
 */
 
-$app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
+$app->group(['namespace' => 'Api\Http\Controllers'], function ($app) {
     require __DIR__.'/../routes/web.php';
 });
 

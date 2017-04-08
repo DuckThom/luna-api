@@ -11,9 +11,9 @@ class ImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::all()->each(function ($user) {
+        \Api\Models\User::all()->each(function ($user) {
             for ($i = 0; $i < 100; $i++) {
-                $user->images()->save(factory(App\Models\Image::class)->make());
+                $user->images()->save(factory(Api\Models\Image::class)->make());
             }
         });
     }

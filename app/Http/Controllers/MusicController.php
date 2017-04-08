@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Api\Http\Controllers;
 
-use App\Facades\LastFm;
+use Api\Facades\LastFm;
 use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 

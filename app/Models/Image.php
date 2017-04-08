@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Api\Models;
 
-use App\Models\Interfaces\ImageInterface;
+use Api\Models\Interfaces\ImageInterface;
 use Illuminate\Database\Eloquent\Model;
-use App\Services\WordsGenerator;
+use Api\Services\WordsGenerator;
 
 /**
  * Image model

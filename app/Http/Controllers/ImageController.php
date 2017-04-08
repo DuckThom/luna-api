@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Api\Http\Controllers;
 
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Webpatser\Uuid\Uuid;
-use App\Models\Image;
+use Api\Models\Image;
 
 /**
  * Image controller
@@ -28,7 +28,7 @@ class ImageController extends Controller
      */
     public function show(string $slug)
     {
-        /** @var \App\Models\Image $image */
+        /** @var \Api\Models\Image $image */
         $image = Image::where('slug', $slug)->first();
 
         if ($image === null) {
@@ -54,7 +54,7 @@ class ImageController extends Controller
      */
     public function info(string $id): JsonResponse
     {
-        /** @var \App\Models\Image $image */
+        /** @var \Api\Models\Image $image */
         $image = Image::find($id);
 
         if ($image === null) {
@@ -85,7 +85,7 @@ class ImageController extends Controller
         }
 
         $images = $query->get()->each(function ($image) {
-            /** @var \App\Models\Image $image */
+            /** @var \Api\Models\Image $image */
             $image->url = $image->getUrl();
         });
 
@@ -138,7 +138,7 @@ class ImageController extends Controller
      */
     public function delete(Request $request, string $id): JsonResponse
     {
-        /** @var \App\Models\Image $image */
+        /** @var \Api\Models\Image $image */
         $image = Image::find($id);
 
         if ($image === null) {

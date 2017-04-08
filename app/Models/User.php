@@ -1,14 +1,19 @@
 <?php
 
-namespace App\Models;
+namespace Api\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Interfaces\UserInterface;
+use Api\Models\Interfaces\UserInterface;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
+/**
+ * User model
+ *
+ * @author  Thomas Wiringa <thomas.wiringa@gmail.com>
+ */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, UserInterface
 {
     use Authenticatable, Authorizable;
@@ -75,6 +80,29 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function setToken(string $token)
     {
         $this->attributes['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get the user name.
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->attributes['name'];
+    }
+
+    /**
+     * Set the user name.
+     *
+     * @param  string  $name
+     * @return $this
+     */
+    public function setName(string $name)
+    {
+        $this->attributes['name'] = $name;
 
         return $this;
     }

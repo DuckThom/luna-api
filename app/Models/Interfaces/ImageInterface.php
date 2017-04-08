@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Interfaces;
+namespace Api\Models\Interfaces;
 
 /**
  * Image model interface
