@@ -2,6 +2,7 @@
 
 namespace Api\Endpoints;
 
+use Illuminate\Http\Request;
 use Laravel\Lumen\Application;
 use Api\Collections\EndpointCollection;
 use Api\Exceptions\MissingUriException;
@@ -77,8 +78,12 @@ abstract class AbstractEndpoint
             $app->{$endpoint->method}($endpoint->uri, [
                 'as' => $endpoint->name,
                 'middleware' => $endpoint->middleware,
-                function () use ($endpoint) {
-                    return $endpoint->handle();
+                function (...$params) use ($endpoint) {
+                    if (!method_exists($endpoint, 'handle')) {
+                        throw new NotFoundHttpException('404 Not Found: '.app('request')->getUri());
+                    }
+
+                    return call_user_func_array([$endpoint, 'handle'], $params);
                 },
             ]);
 
@@ -94,17 +99,5 @@ abstract class AbstractEndpoint
     public function getEndpoints()
     {
         return $this->endpoints;
-    }
-
-    /**
-     * Handle the request.
-     *
-     * By default, throw a NotFoundHttpException so not every route can be accessed by default
-     *
-     * @throws NotFoundHttpException
-     */
-    public function handle()
-    {
-        throw new NotFoundHttpException('404 Not Found: '.app('request')->getUri());
     }
 }
