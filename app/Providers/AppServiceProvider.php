@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('lastfm', function () {
             $client = new Client([
-                'base_uri' => 'https://ws.audioscrobbler.com/'
+                'base_uri' => 'https://ws.audioscrobbler.com/',
             ]);
 
             return new LastFm($client);

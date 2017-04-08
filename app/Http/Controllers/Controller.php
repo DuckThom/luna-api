@@ -2,17 +2,17 @@
 
 namespace Api\Http\Controllers;
 
-use Laravel\Lumen\Routing\Controller as BaseController;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Laravel\Lumen\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    const STATUS_ERROR = "error";
-    const STATUS_SUCCESS = "success";
+    const STATUS_ERROR = 'error';
+    const STATUS_SUCCESS = 'success';
 
     /**
-     * Return a json success response
+     * Return a json success response.
      *
      * @param  array  $data
      * @param  int  $code
@@ -24,14 +24,14 @@ class Controller extends BaseController
         $code = ($code ?: Response::HTTP_OK);
 
         return response()->json([
-            "status" => static::STATUS_SUCCESS,
-            "code" => $code,
-            "payload" => $data
+            'status' => static::STATUS_SUCCESS,
+            'code' => $code,
+            'payload' => $data,
         ], $code, $headers);
     }
 
     /**
-     * Return a json response
+     * Return a json response.
      *
      * @param  array  $data
      * @param  int  $code
@@ -43,9 +43,9 @@ class Controller extends BaseController
         $code = ($code ?: Response::HTTP_BAD_REQUEST);
 
         return response()->json([
-            "status" => static::STATUS_ERROR,
-            "code" => $code,
-            "payload" => $data
+            'status' => static::STATUS_ERROR,
+            'code' => $code,
+            'payload' => $data,
         ], $code, $headers);
     }
 }

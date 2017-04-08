@@ -5,7 +5,7 @@ namespace Api\Endpoints\Image\Show;
 use Api\Endpoints\AbstractEndpoint;
 
 /**
- * Image index endpoint
+ * Image index endpoint.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */

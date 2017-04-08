@@ -5,7 +5,7 @@ namespace Api\Services;
 use GuzzleHttp\Client;
 
 /**
- * Class LastFm
+ * Class LastFm.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
@@ -27,7 +27,7 @@ class LastFm
     }
 
     /**
-     * Get the most recently played track
+     * Get the most recently played track.
      *
      * @param  int  $limit
      * @return \Psr\Http\Message\ResponseInterface

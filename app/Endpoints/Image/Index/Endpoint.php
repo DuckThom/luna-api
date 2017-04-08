@@ -8,7 +8,7 @@ use Api\Endpoints\AbstractEndpoint;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Image index endpoint
+ * Image index endpoint.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
@@ -39,12 +39,12 @@ class Endpoint extends AbstractEndpoint
         }
 
         $images = $query->get()->each(function ($image) {
-            /** @var \Api\Models\Image $image */
+            /* @var \Api\Models\Image $image */
             $image->url = $image->getUrl();
         });
 
         return JsonResponse::create([
-            'images' => $images
+            'images' => $images,
         ], JsonResponse::HTTP_OK);
     }
 }

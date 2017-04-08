@@ -5,7 +5,7 @@ namespace Api\Services\Interfaces;
 use Api\Collections\EndpointCollection;
 
 /**
- * Endpoint service interface
+ * Endpoint service interface.
  *
  * @author  Thomas Wiringa <thomas.wiringa@gmail.com>
  */

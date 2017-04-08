@@ -5,7 +5,7 @@ namespace Api\Services;
 class WordsGenerator
 {
     /**
-     * Get the list of words
+     * Get the list of words.
      *
      * @return \stdClass
      */
@@ -18,7 +18,7 @@ class WordsGenerator
     }
 
     /**
-     * Create a nice string
+     * Create a nice string.
      *
      * @param  int  $adjectives
      * @param  int  $animals

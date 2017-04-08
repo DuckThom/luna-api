@@ -46,7 +46,6 @@ class Authenticate
             ], Response::HTTP_UNAUTHORIZED);
         }
 
-
         return $next($request);
     }
 }

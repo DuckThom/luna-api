@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Music controller
+ * Music controller.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
 class MusicController extends Controller
 {
     /**
-     * Get the currently playing track
+     * Get the currently playing track.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -30,13 +30,13 @@ class MusicController extends Controller
             app('log')->error($e->getMessage(), $e->getTrace());
 
             return $this->jsonError([
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return $this->jsonSuccess([
             'message' => null,
-            'tracks' => \GuzzleHttp\json_decode($responseBody)
+            'tracks' => \GuzzleHttp\json_decode($responseBody),
         ]);
     }
 }

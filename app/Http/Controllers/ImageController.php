@@ -2,17 +2,17 @@
 
 namespace Api\Http\Controllers;
 
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Webpatser\Uuid\Uuid;
 use Api\Models\Image;
+use Webpatser\Uuid\Uuid;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Image controller
+ * Image controller.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
@@ -21,7 +21,7 @@ class ImageController extends Controller
     const MAX_LIST_LIMIT = 50;
 
     /**
-     * Get the data for an image
+     * Get the data for an image.
      *
      * @param  string  $slug
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
@@ -42,12 +42,12 @@ class ImageController extends Controller
         });
 
         return response($imageContent, Response::HTTP_OK, [
-            'Content-Type' => $image->getMimeType()
+            'Content-Type' => $image->getMimeType(),
         ]);
     }
 
     /**
-     * Get the data for an image
+     * Get the data for an image.
      *
      * @param  string  $id
      * @return \Illuminate\Http\JsonResponse
@@ -63,12 +63,12 @@ class ImageController extends Controller
 
         return $this->jsonSuccess($image->toArray() + [
             'url' => $image->getUrl(),
-            'message' => Image::DETAILS
+            'message' => Image::DETAILS,
         ]);
     }
 
     /**
-     * Create a list of images
+     * Create a list of images.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
@@ -85,17 +85,17 @@ class ImageController extends Controller
         }
 
         $images = $query->get()->each(function ($image) {
-            /** @var \Api\Models\Image $image */
+            /* @var \Api\Models\Image $image */
             $image->url = $image->getUrl();
         });
 
         return $this->jsonSuccess([
-            'images' => $images
+            'images' => $images,
         ]);
     }
 
     /**
-     * Create a new image
+     * Create a new image.
      *
      * @param  Request  $request
      * @return \Illuminate\Http\JsonResponse
@@ -103,7 +103,7 @@ class ImageController extends Controller
     public function create(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
-            'image' => ['required', 'image']
+            'image' => ['required', 'image'],
         ]);
 
         if ($validator->passes()) {
@@ -120,17 +120,17 @@ class ImageController extends Controller
 
             return $this->jsonSuccess($image->toArray() + [
                 'url' => $image->getUrl(),
-                'message' => Image::ADD_SUCCESS
+                'message' => Image::ADD_SUCCESS,
             ]);
         } else {
             return $this->jsonError([
-                'message' => Image::ADD_FAILED
+                'message' => Image::ADD_FAILED,
             ]);
         }
     }
 
     /**
-     * Remove an image
+     * Remove an image.
      *
      * @param  Request  $request
      * @param  string  $id
@@ -154,19 +154,19 @@ class ImageController extends Controller
         }
 
         return $this->jsonError([
-            'message' => Image::DELETE_FAILED
+            'message' => Image::DELETE_FAILED,
         ]);
     }
 
     /**
-     * Image not found response
+     * Image not found response.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function imageNotFound(): JsonResponse
     {
         return $this->jsonError([
-            'message' => Image::NOT_FOUND
+            'message' => Image::NOT_FOUND,
         ], Response::HTTP_NOT_FOUND);
     }
 }

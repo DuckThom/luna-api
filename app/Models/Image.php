@@ -2,12 +2,12 @@
 
 namespace Api\Models;
 
-use Api\Models\Interfaces\ImageInterface;
-use Illuminate\Database\Eloquent\Model;
 use Api\Services\WordsGenerator;
+use Illuminate\Database\Eloquent\Model;
+use Api\Models\Interfaces\ImageInterface;
 
 /**
- * Image model
+ * Image model.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */

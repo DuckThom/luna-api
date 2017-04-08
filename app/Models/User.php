@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 /**
- * User model
+ * User model.
  *
  * @author  Thomas Wiringa <thomas.wiringa@gmail.com>
  */
@@ -29,7 +29,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = ['id'];
 
     /**
-     * Related image models
+     * Related image models.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

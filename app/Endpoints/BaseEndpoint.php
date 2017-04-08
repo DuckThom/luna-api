@@ -3,7 +3,7 @@
 namespace Api\Endpoints;
 
 /**
- * Base endpoint
+ * Base endpoint.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */

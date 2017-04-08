@@ -3,7 +3,7 @@
 namespace Api\Exceptions;
 
 /**
- * Missing URI exception
+ * Missing URI exception.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
