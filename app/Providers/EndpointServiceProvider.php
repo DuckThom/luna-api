@@ -6,7 +6,7 @@ use Api\Endpoints\BaseEndpoint;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Endpoint service provider
+ * Endpoint service provider.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
