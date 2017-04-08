@@ -11,7 +11,7 @@
 |
 */
 
-$endpointService = new \Api\Services\EndpointService($app);
+//$endpointService = new \Api\Services\EndpointService($app);
 
 //$app->get('/', function () use ($app) {
 //    return $app->version();
