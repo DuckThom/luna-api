@@ -88,6 +88,7 @@ $app->register(Api\Providers\AuthServiceProvider::class);
 // $app->register(Api\Providers\EventServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
 $app->register(Intervention\Image\ImageServiceProviderLumen::class);
+$app->register(Appzcoder\LumenRoutesList\RoutesCommandServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -2,6 +2,9 @@
 
 namespace Api\Http\Controllers;
 
+use Api\Services\Interfaces\EndpointServiceInterface;
+use Illuminate\Http\Request;
+
 /**
  * API Controller
  *
@@ -9,20 +12,26 @@ namespace Api\Http\Controllers;
  */
 class ApiController extends Controller
 {
-    protected $router;
+    /**
+     * @var EndpointServiceInterface
+     */
+    protected $endpointService;
 
     /**
      * ApiController constructor.
+     *
+     * @param  EndpointServiceInterface  $endpointService
      */
-    public function __construct(RoutingServiceInterface $routingService)
+    public function __construct(EndpointServiceInterface $endpointService)
     {
         $this->middleware('auth:api');
 
-        $this->router = $routingService;
+        $this->endpointService = $endpointService;
     }
 
-    public function handle()
+    public function handle(Request $request)
     {
-
+        $method = strtolower($request->getMethod());
+        $routes = $this->endpointService->getEndpointsByMethod($method);
     }
 }
