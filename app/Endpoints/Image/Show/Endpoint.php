@@ -9,7 +9,7 @@ use Api\Endpoints\AbstractEndpoint;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * Image index endpoint.
+ * Image show endpoint.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */

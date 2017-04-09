@@ -2,7 +2,6 @@
 
 namespace Api\Endpoints;
 
-use Illuminate\Http\Request;
 use Laravel\Lumen\Application;
 use Api\Collections\EndpointCollection;
 use Api\Exceptions\MissingUriException;

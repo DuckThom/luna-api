@@ -25,6 +25,7 @@ class Endpoint extends AbstractEndpoint
     {
         $this->endpoints
             ->add(Show\Endpoint::class, $this->uri)
+            ->add(Info\Endpoint::class, $this->uri)
             ->add(Index\Endpoint::class, $this->uri);
     }
 }

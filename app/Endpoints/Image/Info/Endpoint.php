@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Endpoints\Image\Show;
+namespace Api\Endpoints\Image\Info;
 
 use Api\Models\Image;
 use Illuminate\Http\Response;
@@ -9,7 +9,7 @@ use Api\Endpoints\AbstractEndpoint;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * Image index endpoint.
+ * Image info endpoint.
  *
  * @author  Thomas Wiringa  <thomas.wiringa@gmail.com>
  */
@@ -20,23 +20,23 @@ class Endpoint extends AbstractEndpoint
     /**
      * @var string
      */
-    public $uri = 'show/{slug}';
+    public $uri = 'info/{id}';
 
     /**
      * @var string
      */
-    public $name = 'image.show';
+    public $name = 'image.info';
 
     /**
      * Handle the request.
      *
-     * @param  string  $slug
+     * @param  string  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function handle(string $slug)
+    public function handle(string $id)
     {
         /** @var \Api\Models\Image $image */
-        $image = Image::where('slug', $slug)->first();
+        $image = Image::find($id);
 
         if ($image === null) {
             return ApiResponse::error([
@@ -44,14 +44,9 @@ class Endpoint extends AbstractEndpoint
             ], Response::HTTP_NOT_FOUND);
         }
 
-        $image->addView();
-
-        $imageContent = Cache::store('file')->remember('image.'.$slug, 15, function () use ($image) {
-            return $image->getContent();
-        });
-
-        return response($imageContent, Response::HTTP_OK, [
-            'Content-Type' => $image->getMimeType(),
+        return ApiResponse::success($image->toArray() + [
+            'url' => $image->getUrl(),
+            'message' => Image::DETAILS,
         ]);
     }
 }
